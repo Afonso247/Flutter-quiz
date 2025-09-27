@@ -10,19 +10,20 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  Widget? activeScreen;
-
-  @override
-  void initState() {
-    super.initState();
-
-    activeScreen = StartScreen(trocarTela);
-  }
+  var activeScreen = 'start-screen';
 
   void trocarTela() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = 'questions-screen';
     });
+  }
+
+  Widget telaAtual() {
+    if (activeScreen == 'start-screen') {
+      return StartScreen(trocarTela);
+    } else {
+      return QuestionsScreen();
+    }
   }
 
   @override
@@ -30,10 +31,8 @@ class _QuizState extends State<Quiz> {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 114, 23, 117),
-          ),
-          child: activeScreen,
+          decoration: BoxDecoration(color: Color.fromARGB(255, 114, 23, 117)),
+          child: telaAtual(),
         ),
       ),
     );
