@@ -2,48 +2,48 @@ import 'package:quiz_app/models/question_model.dart';
 
 const questions = [
   QuestionModel(
-    'What are the main building blocks of Flutter UIs?',
+    'Quais são os principais blocos de construção das UIs do Flutter?',
     [
       'Widgets',
-      'Components',
-      'Blocks',
-      'Functions',
+      'Componentes',
+      'Blocos',
+      'Funções',
     ],
   ),
   QuestionModel(
-    'How are Flutter UIs built?',
+    'Como são construídas as UIs do Flutter?',
     [
-      'By combining widgets in code',
-      'By combining widgets in a visual editor',
-      'By defining widgets in config files',
-      'By using XCode for iOS and Android Studio for Android',
+      'Combinando widgets no código',
+      'Combinando widgets em um editor visual',
+      'Definindo widgets em arquivos de configuração',
+      'Usando XCode para iOS e Android Studio para Android',
     ],
   ),
   QuestionModel(
-    'What\'s the purpose of a StatefulWidget?',
+    'Qual é o propósito de um StatefulWidget?',
     [
-      'To contain data that changes over time',
-      'To contain data that does not change over time',
-      'To contain data that can be accessed by subwidgets',
-      'To contain data that cannot be accessed by subwidgets',
+      'Conter dados que mudam ao longo do tempo',
+      'Conter dados que não mudam ao longo do tempo',
+      'Conter dados que podem ser acessados por subwidgets',
+      'Conter dados que não podem ser acessados por subwidgets',
     ],
   ),
   QuestionModel(
-    'What\'s the purpose of a StatelessWidget?',
+    'Qual é o propósito de um StatelessWidget?',
     [
-      'To contain data that changes over time',
-      'To contain data that does not change over time',
-      'To contain data that can be accessed by subwidgets',
-      'To contain data that cannot be accessed by subwidgets',
+      'Conter dados que mudam ao longo do tempo',
+      'Conter dados que não mudam ao longo do tempo',
+      'Conter dados que podem ser acessados por subwidgets',
+      'Conter dados que não podem ser acessados por subwidgets',
     ],
   ),
   QuestionModel(
-    'What\'s the main difference between a StatefulWidget and a StatelessWidget?',
+    'Qual é a principal diferença entre um StatefulWidget e um StatelessWidget?',
     [
-      'StatelessWidgets can\'t have states',
-      'StatelessWidgets can have states',
-      'StatefulWidgets can\'t have states',
-      'StatefulWidgets can have states',
+      'StatelessWidgets não podem ter estados',
+      'StatelessWidgets podem ter estados',
+      'StatefulWidgets não podem ter estados',
+      'StatefulWidgets podem ter estados',
     ]
   ),
 ];
