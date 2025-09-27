@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+  const StartScreen(this.trocarTela, {super.key});
+
+  final void Function() trocarTela;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +29,7 @@ class StartScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
             )),
-            onPressed: () {
-              debugPrint('yay!');
-            },
+            onPressed: trocarTela,
             icon: const Icon(Icons.arrow_right_alt),
             label: const Text("Começar Quiz"),
           ),

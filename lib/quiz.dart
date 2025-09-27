@@ -10,7 +10,14 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  Widget activeScreen = const StartScreen();
+  Widget? activeScreen;
+
+  @override
+  void initState() {
+    super.initState();
+
+    activeScreen = StartScreen(trocarTela);
+  }
 
   void trocarTela() {
     setState(() {
