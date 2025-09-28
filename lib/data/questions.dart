@@ -31,8 +31,8 @@ const questions = [
   QuestionModel(
     'Qual é o propósito de um StatelessWidget?',
     [
-      'Conter dados que mudam ao longo do tempo',
       'Conter dados que não mudam ao longo do tempo',
+      'Conter dados que mudam ao longo do tempo',
       'Conter dados que podem ser acessados por subwidgets',
       'Conter dados que não podem ser acessados por subwidgets',
     ],
@@ -43,7 +43,7 @@ const questions = [
       'StatelessWidgets não podem ter estados',
       'StatelessWidgets podem ter estados',
       'StatefulWidgets não podem ter estados',
-      'StatefulWidgets podem ter estados',
+      'Não existe diferença entre os dois',
     ]
   ),
 ];

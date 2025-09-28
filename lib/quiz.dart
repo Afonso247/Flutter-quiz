@@ -21,8 +21,8 @@ class _QuizState extends State<Quiz> {
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        selectedAnswers = [];
         activeScreen = 'results-screen';
+        selectedAnswers = [];
       });
     }
   }
@@ -41,7 +41,9 @@ class _QuizState extends State<Quiz> {
         onSelectAnswer: selecionarResposta,
       );
     } else if (activeScreen == 'results-screen') {
-      return ResultsScreen();
+      return ResultsScreen(
+        selectedAnswers: selectedAnswers,
+      );
     } else {
       return StartScreen(trocarTela);
     }
