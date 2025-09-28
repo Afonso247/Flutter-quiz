@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/screens/questions_screen.dart';
 import 'package:quiz_app/screens/start_screen.dart';
+import 'package:quiz_app/data/questions.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -16,6 +17,14 @@ class _QuizState extends State<Quiz> {
 
   void selecionarResposta(String resposta) {
     selectedAnswers.add(resposta);
+
+    if (selectedAnswers.length == questions.length) {
+      debugPrint('Nah id win!');
+      // setState(() {
+      //   selectedAnswers = [];
+      //   activeScreen = 'questions-screen';
+      // });
+    }
   }
 
   void trocarTela() {
