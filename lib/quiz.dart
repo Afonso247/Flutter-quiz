@@ -39,12 +39,20 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  void resetQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = 'start-screen';
+    });
+  }
+
   Widget telaAtual() {
     if (activeScreen == 'start-screen') {
       return StartScreen(iniciarQuiz);
     } else if (activeScreen == 'questions-screen') {
       return QuestionsScreen(
         onSelectAnswer: selecionarResposta,
+        onGoToStartScreen: resetQuiz,
       );
     } else if (activeScreen == 'results-screen') {
       return ResultsScreen(

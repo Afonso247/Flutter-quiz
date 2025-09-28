@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-
 import 'package:quiz_app/components/custom_button.dart';
 import 'package:quiz_app/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key, required this.onSelectAnswer});
-
+  const QuestionsScreen({
+    super.key, 
+    required this.onSelectAnswer,
+    required this.onGoToStartScreen,
+  });
+  
   final void Function(String answer) onSelectAnswer;
+  final void Function() onGoToStartScreen;
 
   @override
   State<QuestionsScreen> createState() => _QuestionsScreenState();
@@ -28,7 +32,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
     final currentQuestion = questions[currentQuestionIndex];
-
+    
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -52,6 +56,17 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               CustomButton(customText: answer, customFunction: () {
                 handleQuestionAnswer(answer);
               }),
+            const SizedBox(height: 10),
+            TextButton(
+              onPressed: widget.onGoToStartScreen,
+              child: const Text(
+                'Voltar ao início',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            ),
           ],
         ),
       ),
