@@ -11,9 +11,20 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+  var currentQuestionIndex = 0;
+
+  void changeQuestionIndex() {
+    // passa por todas as perguntas existentes de 'questions'
+    if (currentQuestionIndex < questions.length - 1) {
+      setState(() {
+        currentQuestionIndex++;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final currentQuestion = questions[0];
+    final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
       width: double.infinity,
@@ -35,7 +46,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             const SizedBox(height: 20),
             // for-in loop
             for (final answer in currentQuestion.getShuffledAnswers())
-              CustomButton(customText: answer, customFunction: () {}),
+              CustomButton(customText: answer, customFunction: changeQuestionIndex),
           ],
         ),
       ),
