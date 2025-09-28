@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:quiz_app/components/custom_button.dart';
+import 'package:quiz_app/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -12,17 +13,20 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
+    final currentQuestion = questions[0];
+
     return SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('Pergunta'),
+          Text(currentQuestion.questionText),
           const SizedBox(height: 20),
-          CustomButton(customText: 'Resposta 1', customFunction: () {}),
-          CustomButton(customText: 'Resposta 2', customFunction: () {}),
-          CustomButton(customText: 'Resposta 3', customFunction: () {}),
-      ]),
+          // for-in loop
+          for (final answer in currentQuestion.questionAnswers)
+            CustomButton(customText: answer, customFunction: () {}),
+        ],
+      ),
     );
   }
 }
