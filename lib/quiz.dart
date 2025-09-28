@@ -22,12 +22,18 @@ class _QuizState extends State<Quiz> {
     if (selectedAnswers.length == questions.length) {
       setState(() {
         activeScreen = 'results-screen';
-        // selectedAnswers = [];
       });
     }
   }
 
-  void trocarTela() {
+  void reiniciarQuiz() {
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = 'start-screen';
+    });
+  }
+
+  void iniciarQuiz() {
     setState(() {
       activeScreen = 'questions-screen';
     });
@@ -35,7 +41,7 @@ class _QuizState extends State<Quiz> {
 
   Widget telaAtual() {
     if (activeScreen == 'start-screen') {
-      return StartScreen(trocarTela);
+      return StartScreen(iniciarQuiz);
     } else if (activeScreen == 'questions-screen') {
       return QuestionsScreen(
         onSelectAnswer: selecionarResposta,
@@ -43,9 +49,10 @@ class _QuizState extends State<Quiz> {
     } else if (activeScreen == 'results-screen') {
       return ResultsScreen(
         selectedAnswers: selectedAnswers,
+        onRestart: reiniciarQuiz,
       );
     } else {
-      return StartScreen(trocarTela);
+      return StartScreen(iniciarQuiz);
     }
   }
 
