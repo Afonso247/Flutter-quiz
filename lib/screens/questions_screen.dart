@@ -15,9 +15,6 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   Widget build(BuildContext context) {
     final currentQuestion = questions[0];
 
-    final shuffledAnswers = List<String>.from(currentQuestion.questionAnswers);
-    shuffledAnswers.shuffle();
-
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -37,7 +34,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             ),
             const SizedBox(height: 20),
             // for-in loop
-            for (final answer in shuffledAnswers)
+            for (final answer in currentQuestion.getShuffledAnswers())
               CustomButton(customText: answer, customFunction: () {}),
           ],
         ),
