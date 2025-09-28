@@ -60,7 +60,7 @@ class ResultsScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {},
-              icon: const Icon(Icons.arrow_right_alt),
+              icon: const Icon(Icons.restart_alt_outlined),
               label: const Text("Retornar ao Quiz"),
             ),
           ],
