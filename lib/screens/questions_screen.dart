@@ -15,17 +15,32 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   Widget build(BuildContext context) {
     final currentQuestion = questions[0];
 
+    final shuffledAnswers = List<String>.from(currentQuestion.questionAnswers);
+    shuffledAnswers.shuffle();
+
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(currentQuestion.questionText),
-          const SizedBox(height: 20),
-          // for-in loop
-          for (final answer in currentQuestion.questionAnswers)
-            CustomButton(customText: answer, customFunction: () {}),
-        ],
+      child: Container(
+        margin: const EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              currentQuestion.questionText,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+            // for-in loop
+            for (final answer in shuffledAnswers)
+              CustomButton(customText: answer, customFunction: () {}),
+          ],
+        ),
       ),
     );
   }
