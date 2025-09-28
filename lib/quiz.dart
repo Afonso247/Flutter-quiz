@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/screens/results_screen.dart';
 import 'package:quiz_app/screens/questions_screen.dart';
 import 'package:quiz_app/screens/start_screen.dart';
 import 'package:quiz_app/data/questions.dart';
@@ -12,18 +13,17 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
 
-  final List<String> selectedAnswers = [];
+  List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
 
   void selecionarResposta(String resposta) {
     selectedAnswers.add(resposta);
 
     if (selectedAnswers.length == questions.length) {
-      debugPrint('Nah id win!');
-      // setState(() {
-      //   selectedAnswers = [];
-      //   activeScreen = 'questions-screen';
-      // });
+      setState(() {
+        selectedAnswers = [];
+        activeScreen = 'results-screen';
+      });
     }
   }
 
@@ -36,10 +36,14 @@ class _QuizState extends State<Quiz> {
   Widget telaAtual() {
     if (activeScreen == 'start-screen') {
       return StartScreen(trocarTela);
-    } else {
+    } else if (activeScreen == 'questions-screen') {
       return QuestionsScreen(
         onSelectAnswer: selecionarResposta,
       );
+    } else if (activeScreen == 'results-screen') {
+      return ResultsScreen();
+    } else {
+      return StartScreen(trocarTela);
     }
   }
 
