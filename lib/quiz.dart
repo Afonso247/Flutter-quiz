@@ -10,7 +10,13 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+
+  final List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
+
+  void selecionarResposta(String resposta) {
+    selectedAnswers.add(resposta);
+  }
 
   void trocarTela() {
     setState(() {
@@ -22,7 +28,9 @@ class _QuizState extends State<Quiz> {
     if (activeScreen == 'start-screen') {
       return StartScreen(trocarTela);
     } else {
-      return QuestionsScreen();
+      return QuestionsScreen(
+        onSelectAnswer: selecionarResposta,
+      );
     }
   }
 

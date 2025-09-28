@@ -4,7 +4,9 @@ import 'package:quiz_app/components/custom_button.dart';
 import 'package:quiz_app/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key});
+  const QuestionsScreen({super.key, required this.onSelectAnswer});
+
+  final void Function(String answer) onSelectAnswer;
 
   @override
   State<QuestionsScreen> createState() => _QuestionsScreenState();
@@ -13,7 +15,8 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionsScreenState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
 
-  void changeQuestionIndex() {
+  void handleQuestionAnswer(String answer) {
+    widget.onSelectAnswer(answer);
     // passa por todas as perguntas existentes de 'questions'
     if (currentQuestionIndex < questions.length - 1) {
       setState(() {
@@ -46,7 +49,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             const SizedBox(height: 20),
             // for-in loop
             for (final answer in currentQuestion.getShuffledAnswers())
-              CustomButton(customText: answer, customFunction: changeQuestionIndex),
+              CustomButton(customText: answer, customFunction: () {
+                handleQuestionAnswer(answer);
+              }),
           ],
         ),
       ),
