@@ -4,12 +4,16 @@ import 'package:quiz_app/components/questions_summary.dart';
 import 'package:quiz_app/data/questions.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({super.key, required this.selectedAnswers, required this.onRestart});
+  const ResultsScreen({
+    super.key,
+    required this.selectedAnswers,
+    required this.onRestart,
+  });
 
   final void Function() onRestart;
   final List<String> selectedAnswers;
 
-  List<Map<String, Object>> getSummaryData() {
+  List<Map<String, Object>> get summaryData {
     final List<Map<String, Object>> summary = [];
 
     for (var i = 0; i < selectedAnswers.length; i++) {
@@ -26,7 +30,6 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final summaryData = getSummaryData();
     final numTotalQuestions = questions.length;
     final numCorrectQuestions = summaryData.where((data) {
       return data['user_answer'] == data['correct_answer'];
@@ -50,7 +53,7 @@ class ResultsScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
-            QuestionsSummary(getSummaryData()),
+            QuestionsSummary(summaryData),
             SizedBox(height: 20),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
