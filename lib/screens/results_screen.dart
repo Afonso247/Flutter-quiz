@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:quiz_app/components/questions_summary.dart';
 import 'package:quiz_app/data/questions.dart';
 
 class ResultsScreen extends StatelessWidget {
@@ -42,11 +43,7 @@ class ResultsScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
-            Text(
-              "Uma lista...",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
+            QuestionsSummary(getSummaryData()),
             SizedBox(height: 20),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
