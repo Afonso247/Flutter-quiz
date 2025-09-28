@@ -52,7 +52,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
             ),
             const SizedBox(height: 20),
             // for-in loop
-            for (final answer in currentQuestion.getShuffledAnswers())
+            for (final answer in currentQuestion.shuffledAnswers)
               CustomButton(customText: answer, customFunction: () {
                 handleQuestionAnswer(answer);
               }),
